@@ -170,7 +170,7 @@ user@7e371c1614ad:~/openwrt$
 
 Last, but far from least, there is a script you will need to **run one time** that I have placed into your container's `/tmp` directory.
 
-You will execute the script as follows:
+You will execute the script as follows **from within the container**:
 
 ```bash
 $ /tmp/setup_pesa1234_repo.sh
