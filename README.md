@@ -1,12 +1,12 @@
 # openwrt-pesa1234-build
 
-This is a definition of a viable build container for building @pesa1234's OpenWrt image.
+This is a definition of a viable build container for building [@pesa1234's](https://github.com/pesa1234) OpenWrt image.
 
 ## About
 
 This project and container does not replace the need to have knowledge about the [OpenWrt Build System](https://openwrt.org/docs/guide-developer/toolchain/use-buildsystem).
 
-The intent of this project is to provide a minimal basis for those wanting to get into building @pesa1234's image for the incredible [GL.iNet GL-MT6000 device](https://openwrt.org/toh/gl.inet/gl-mt6000).
+The intent of this project is to provide a minimal basis for those wanting to get into building [@pesa1234's](https://github.com/pesa1234) image for the incredible [GL.iNet GL-MT6000 device](https://openwrt.org/toh/gl.inet/gl-mt6000).
 
 Knowledge of how to work with the build system, including Menuconfig, is up to the user of this repo.
 
@@ -14,7 +14,7 @@ Knowledge of how to work with the build system, including Menuconfig, is up to t
 
 * One or more [GL.iNet GL-MT6000 Devices](https://openwrt.org/toh/gl.inet/gl-mt6000)
 * Reading Skills (Did you read through the [OpenWrt Build System](https://openwrt.org/docs/guide-developer/toolchain/use-buildsystem) usage yet? 😉)
-* Follow @pesa1234's [MT6000 Build Thread](https://forum.openwrt.org/t/mt6000-custom-build-with-luci-and-some-optimization-kernel-6-6-x/185241)
+* Follow [@pesa1234's](https://github.com/pesa1234) [MT6000 Build Thread](https://forum.openwrt.org/t/mt6000-custom-build-with-luci-and-some-optimization-kernel-6-6-x/185241)
 * Patience
 * Patience
 * Patience (Yes, I wrote this three times. I'm serious about this.)
@@ -166,7 +166,7 @@ under certain conditions.
 user@7e371c1614ad:~/openwrt$
 ```
 
-## Setup Pesa1234's Repo
+## Setup [Pesa1234's](https://github.com/pesa1234) Repo
 
 Last, but far from least, there is a script you will need to **run one time** that I have placed into your container's `/tmp` directory.
 
@@ -235,6 +235,6 @@ $ make -j$((1+`nproc`)) clean download world V=s 2>&1 | tee build.log | grep -i 
 
 ## Feedback
 
-I am providing this as a free resource written in my own time, just as Pesa1234 pours hours of life into the source repo. That said, I welcome any feedback and will get to any bug fixes or improvements as time allows.
+I am providing this as a free resource written in my own time, just as [Pesa1234](https://github.com/pesa1234) pours hours of life into the source repo. That said, I welcome any feedback and will get to any bug fixes or improvements as time allows.
 
 Thanks and enjoy!
