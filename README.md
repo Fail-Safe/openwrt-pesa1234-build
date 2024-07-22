@@ -216,6 +216,23 @@ under certain conditions.
 fatal: destination path '/home/user/openwrt' already exists and is not an empty directory.
 ```
 
+## Check Docker Virtual Disk Limit
+
+A baseline, vanilla build requires around 15GB of space.
+
+Baseline Config:
+```bash
+CONFIG_TARGET_mediatek=y
+CONFIG_TARGET_mediatek_filogic=y
+CONFIG_TARGET_mediatek_filogic_DEVICE_glinet_gl-mt6000=y
+```
+
+Docker Desktop by default limits disk space for Docker Volumes (called 'Virtual disk limit' in the GUI) to something lesser than that size. Double-check that you are allowing Docker Volume space ('Virtual disk limit') to use upwards of 24GB is a critical step.
+
+Depending on the additional libraries, packages, firmware, etc you may select to include in your build, even 24GB of allocated space may not be enough. My rule of thumb is that anytime you hit an unexpected build error, be in the habit of running a quick `df -h` to ensure your Docker volume space is not exhausted.
+
+Clearing space on a Docker Volume is outside the scope of this README/project, but there are plenty of guides available on the net to help you out. Take time to learn--it's a blast! 💯
+
 ## Next Steps
 
 Did you read through the [OpenWrt Build System](https://openwrt.org/docs/guide-developer/toolchain/use-buildsystem) usage yet? 😉
