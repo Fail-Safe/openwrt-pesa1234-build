@@ -246,9 +246,12 @@ From here the process to build will follow standard process in the OpenWrt build
 e.g. For those of you who just aren't going to read the docs...
 
 ```bash
-$ git fetch && git pull
-$ ./scripts/feeds update -a && ./scripts/feeds install -a
-$ make menuconfig && make defconfig
+$ git fetch
+$ git pull
+$ ./scripts/feeds update -a
+$ ./scripts/feeds install -a
+$ make menuconfig
+$ make defconfig
 $ make -j$((1+`nproc`)) clean download world V=s 2>&1 | tee build.log | grep -i -E "^make.*(error|[12345]...Entering dir)"
 ```
 
