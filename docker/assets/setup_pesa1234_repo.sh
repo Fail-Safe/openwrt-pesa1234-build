@@ -21,8 +21,16 @@ echo "This is free software, and you are welcome to redistribute it"
 echo "under certain conditions."
 echo ""
 
-repo_version="next-r2.9.3.mtk"
+repo_version="next-r3.1.0.mtk"
+build_version="2024.07.27_r27011_6.6.41_${repo_version}"
 
 echo ">> Cloning pesa1234's repo into the container. This will take a bit..."
 echo ""
 git clone -b "$repo_version" https://github.com/pesa1234/openwrt.git /home/user/openwrt/
+
+cd /home/user/openwrt/ || exit
+
+wget "https://raw.githubusercontent.com/pesa1234/MT6000_cust_build/main/${build_version}/targets/mediatek/filogic/config.buildinfo" -O .config
+
+echo ""
+echo ">> You can now build Pesa's default build by following the steps here: https://github.com/Fail-Safe/openwrt-pesa1234-build?tab=readme-ov-file#next-steps"
