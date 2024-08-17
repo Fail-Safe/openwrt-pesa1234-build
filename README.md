@@ -30,12 +30,12 @@ Clone this project to your local system:
 
 Https:
 ```bash
-$ git clone https://github.com/Fail-Safe/openwrt-pesa1234-build.git
+$ git clone https://github.com/Fail-Safe/openwrt-pesa1234-build.git && cd openwrt-pesa1234-build
 ```
 
 SSH:
 ```bash
-$ git clone git@github.com:Fail-Safe/openwrt-pesa1234-build.git
+$ git clone git@github.com:Fail-Safe/openwrt-pesa1234-build.git && cd openwrt-pesa1234-build
 ```
 
 ### Container Volume
