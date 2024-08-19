@@ -31,5 +31,8 @@ cd /home/user/openwrt/ || exit
 
 wget "https://raw.githubusercontent.com/pesa1234/MT6000_cust_build/main/config_file/.config" -O .config
 
+# Replace the empty CONFIG_BPF_TOOLCHAIN_HOST_PATH with the value in LLVM_HOST_PATH
+sed -i -e 's|CONFIG_BPF_TOOLCHAIN_HOST_PATH=""|CONFIG_BPF_TOOLCHAIN_HOST_PATH="'$LLVM_HOST_PATH'"|' .config
+
 echo ""
 echo ">> You can now build Pesa's default build by following the steps here: https://github.com/Fail-Safe/openwrt-pesa1234-build?tab=readme-ov-file#next-steps"
