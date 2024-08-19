@@ -71,6 +71,7 @@ RUN wget --ca-directory=/etc/ssl/certs/ https://go.dev/dl/go${GO_VERSION}.linux-
 ENV PATH=$PATH:/usr/local/go/bin
 
 RUN bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+ENV LLVM_HOST_PATH="/usr/lib/$(ls /usr/lib/ | grep llvm | sort -r | head -1 | cut -d' ' -f11)"
 
 RUN useradd -m $USER \
     && echo "${USER} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${USER} \
