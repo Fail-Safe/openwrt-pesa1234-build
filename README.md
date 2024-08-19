@@ -255,6 +255,8 @@ $ make defconfig
 $ make -j$((1+`nproc`)) clean download world V=s 2>&1 | tee build.log | grep -i -E "^make.*(error|[12345]...Entering dir)"
 ```
 
+The first build is going to take a while, seriously. In a newly cloned OpenWrt repo, the toolchain for your target platform must be built before the general build (read: packages) for your image. Once the toolchain is built, subsequent builds will be faster as the toolchain is not cleaned between each build.
+
 ## Feedback
 
 I am providing this as a free resource written in my own time, just as [Pesa1234](https://github.com/pesa1234) pours hours of life into the source repo. That said, I welcome any feedback and will get to any bug fixes or improvements as time allows.
