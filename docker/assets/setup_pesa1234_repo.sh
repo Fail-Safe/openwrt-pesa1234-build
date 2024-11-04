@@ -21,7 +21,7 @@ echo "This is free software, and you are welcome to redistribute it"
 echo "under certain conditions."
 echo ""
 
-repo_version="next-r3.2.2.mtk"
+repo_version="next-r4.3.6.mtk"
 
 echo ">> Cloning pesa1234's repo into the container. This will take a bit..."
 echo ""
