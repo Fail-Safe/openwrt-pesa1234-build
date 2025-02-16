@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-FROM ubuntu:23.10
+FROM ubuntu:24.04
 
 ARG DEBIAN_FRONTEND="noninteractive"
 ARG GO_VERSION=1.22.5
@@ -35,20 +35,22 @@ RUN apt-get update \
     file \
     flex \
     g++ \
+    g++-multilib \
     gawk \
+    gcc-multilib \
     gettext \
     git \
     gnupg \
     less \
     libelf-dev \
     libfdt-dev \
-    libncurses5-dev \
+    libncurses-dev \
     libssl-dev \
+    llvm \
     lsb-release \
     nano \
     ncdu \
     openssh-client \
-    python3-distutils \
     python3-setuptools \
     quilt \
     rsync \
@@ -70,7 +72,6 @@ RUN wget --ca-directory=/etc/ssl/certs/ https://go.dev/dl/go${GO_VERSION}.linux-
     && rm -f go${GO_VERSION}.linux-arm64.tar.gz
 ENV PATH=$PATH:/usr/local/go/bin
 
-RUN bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 RUN llvm_host_path="/usr/lib/$(ls /usr/lib/ | grep llvm | sort -r | head -1 | cut -d' ' -f11)" \
     && echo "export LLVM_HOST_PATH=$llvm_host_path" >> /etc/bash.bashrc
 
