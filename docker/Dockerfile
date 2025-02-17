@@ -16,7 +16,7 @@
 FROM ubuntu:24.04
 
 ARG DEBIAN_FRONTEND="noninteractive"
-ARG GO_VERSION=1.22.5
+ARG GO_VERSION=1.24.0
 
 ENV USER="user"
 ARG USER_HOME="/home/$USER"
