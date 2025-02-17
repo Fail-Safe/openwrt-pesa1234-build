@@ -26,4 +26,8 @@ volume_name="pesa1234-build"
 
 echo ">> Running docker container..."
 echo ""
-docker run -it --mount type=volume,source="$volume_name",target=/home/user --rm --name "$image_name" "$image_name"
+docker run -it \
+    --mount type=volume,source="$volume_name",target=/home/user \
+    --mount type=bind,source=$(pwd)/extra,target=/home/user/extra,ro \
+    --mount type=bind,source=$(pwd)/docker/assets/setup_pesa1234_repo.sh,target=/tmp/setup_pesa1234_repo.sh,ro \
+    --rm --name "$image_name" "$image_name"

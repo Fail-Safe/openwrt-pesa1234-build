@@ -168,7 +168,15 @@ user@7e371c1614ad:~/openwrt$
 
 ## Setup [Pesa1234's](https://github.com/pesa1234) Repo
 
-Last, but far from least, there is a script you will need to **run one time** that I have placed into your container's `/tmp` directory.
+Last, but far from least, there is a script you will need to **run at least one time** that I have placed into your container's `/tmp` directory.
+
+The script will:
+- Get the defined branch from Pesa123's repo
+- Get the required config for the specific version (or the default config)
+- Ensure your build environment is set up correctly
+- Copy any extra files or a `diffconfig` from your local `./extra/` folder into the `~/openwrt/` build environment in the container
+
+If you need to make changes to the downloaded versions, you can edit the file in `docker/assets/setup_pesa1234_repo.sh` and restart the container.
 
 You will execute the script as follows **from within the container**:
 
@@ -195,25 +203,11 @@ Receiving objects: 100% (703795/703795), 266.93 MiB | 18.14 MiB/s, done.
 Resolving deltas: 100% (474411/474411), done.
 ```
 
-You can confirm you're on Pesa's latest stable branch (r2.9.3) by running:
+You can confirm you're on Pesa's latest stable branch (r4.4.6) by running:
 
 ```bash
 $ git branch
-* next-r2.9.3.mtk
-```
-
-If you missed my emboldened note above about running it once, you're in luck. It won't overwrite your build environment. But you will get a message like so:
-
-```bash
-user@7e371c1614ad:~/openwrt$ /tmp/setup_pesa1234_repo.sh
-Copyright (C) 2024  Mark Baker <mark@vpost.net>
-This program comes with ABSOLUTELY NO WARRANTY.
-This is free software, and you are welcome to redistribute it
-under certain conditions.
-
->> Cloning pesa1234's repo into the container. This will take a bit...
-
-fatal: destination path '/home/user/openwrt' already exists and is not an empty directory.
+* next-r4.4.6.mtk
 ```
 
 ## Check Docker Virtual Disk Limit
@@ -256,6 +250,16 @@ $ make -j$((1+`nproc`)) clean download world V=s 2>&1 | tee build.log | grep -i 
 ```
 
 The first build is going to take a while, seriously. In a newly cloned OpenWrt repo, the toolchain for your target platform must be built before the general build (read: packages) for your image. Once the toolchain is built, subsequent builds will be faster as the toolchain is not cleaned between each build.
+
+## Copy the build artifacts from the container
+
+After the OpenWrt build has succeeded, it is stored inside the container. To upload it to your router, you need to copy it to your local drive.
+
+Open a **second** terminal in the cloned repo (where this README is stored), **without exiting the docker container** and run the following command:
+
+```bash
+docker cp pesa1234-builder:/home/user/openwrt/bin .
+```
 
 ## Feedback
 
