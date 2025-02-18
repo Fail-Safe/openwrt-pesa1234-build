@@ -34,9 +34,9 @@ RUN apt-get update \
     file \
     flex \
     g++ \
-    g++-multilib \
+    $(dpkg --print-architecture | grep -q "amd64" && echo "g++-multilib" || echo "") \
     gawk \
-    gcc-multilib \
+    $(dpkg --print-architecture | grep -q "amd64" && echo "gcc-multilib" || echo "") \
     gettext \
     git \
     gnupg \
